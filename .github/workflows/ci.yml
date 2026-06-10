@@ -87,22 +87,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        working-directory: front
-        run: npm install
-
       - name: Analyze front with SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectBaseDir: front
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
-          SONARCLOUD_URL: https://sonarcloud.io
-        args: >
-          -Dsonar.projectKey=bobapp-front
-          -Dsonar.organization=TON_ORGANISATION
+        with:
+          projectBaseDir: front
+          args: >
+            -Dsonar.projectKey=bobapp-front
+            -Dsonar.organization=TON_ORGANISATION
