@@ -84,7 +84,7 @@ jobs:
 
       - name: Analyze back with SonarCloud
         working-directory: back
-        run: mvn sonar:sonar
+        run: mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
 
